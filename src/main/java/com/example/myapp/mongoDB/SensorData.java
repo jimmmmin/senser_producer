@@ -5,13 +5,18 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.io.Serializable;
 import java.util.Map;
 
 @Document(collection = "keepData")
-public class SensorData {
+public class SensorData implements Serializable {
     private String date;
     private String time;
     private long ts;
+
+    public SensorData() {
+        super();
+    }
 
     public SensorData(String date, String time, long ts) {
         this.date = date;
