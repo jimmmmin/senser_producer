@@ -22,18 +22,18 @@ import static org.springframework.data.mongodb.core.query.Criteria.where;
 @RestController
 public class ReceiveAck {
 
-    @Autowired
-    MongoTemplate mongoTemplate;
-
-    @RequestMapping(value="/ack", method = RequestMethod.POST)
-    @ResponseBody
-    public void Receive(@RequestBody Map<String,Object> lastTs) {
-        //ObjectMapper objectMapper = new ObjectMapper();
-        //Map lastTs = objectMapper.readValue(jsonLast,  new TypeReference<Map<String,String>>() {});
-        String timeStamp = (String)lastTs.get("ts");
-        long ts = Long.parseLong(timeStamp);
-        Query query = new Query(Criteria.where("ts").lte(ts));
-        mongoTemplate.remove(query,"keepData");
-        System.out.println("delete data");
-    }
+//    @Autowired
+//    MongoTemplate mongoTemplate;
+//
+//    @RequestMapping(value="/ack", method = RequestMethod.POST)
+//    @ResponseBody
+//    public void Receive(@RequestBody Map<String,Object> lastTs) {
+//        //ObjectMapper objectMapper = new ObjectMapper();
+//        //Map lastTs = objectMapper.readValue(jsonLast,  new TypeReference<Map<String,String>>() {});
+//        String timeStamp = (String)lastTs.get("ts");
+//        long ts = Long.parseLong(timeStamp);
+//        Query query = new Query(Criteria.where("ts").lte(ts));
+//        mongoTemplate.remove(query,"keepData");
+//        System.out.println("delete data");
+//    }
 }
