@@ -13,7 +13,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()    //경로에 따른 권한을 지정할 수 있음.
-                .antMatchers("/", "/login","/service","/resources/**","/create","/resultTest").permitAll()
+                .antMatchers("/", "/login","/service","/resources/**","/create","/restResult","/restLast").permitAll()
                 .antMatchers("/admin").hasRole("ADMIN") //()안 권한을 가진 유저만 경로에 접근
                 .anyRequest().authenticated()
                 .and()

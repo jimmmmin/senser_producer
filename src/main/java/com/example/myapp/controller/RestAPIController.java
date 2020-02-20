@@ -31,9 +31,8 @@ public class RestAPIController {
     @Autowired
     MongoTemplate mongoTemplate;
 
-    @RequestMapping(value = "/restTest", method = RequestMethod.POST)
-    public ResponseEntity<String> restTest(@RequestBody Map<String,Object> map) {
-
+    @RequestMapping(value = "/restLast", method = RequestMethod.POST)
+    public Mono<String> restTest(@RequestBody Map<String,Object> map) {
 
         System.out.println("정보받음!" );
 
@@ -53,13 +52,13 @@ public class RestAPIController {
         mongoTemplate.remove(query,"keepData");
         System.out.println("delete data");
 
-
-
-         return new ResponseEntity<>("oh yeah~~~~", HttpStatus.CREATED);
+        System.out.println(map.get("data"));
+        Mono<String> ack = Mono.just("성공이요~");
+        return ack;
     }
 
 
-    @RequestMapping(value="/resultTest", method = RequestMethod.POST)
+    @RequestMapping(value="/restResult", method = RequestMethod.POST)
     public Mono<String> resultTest(@RequestBody Map<String,Object> map) {
 
         System.out.println("들어오긴한다...");
