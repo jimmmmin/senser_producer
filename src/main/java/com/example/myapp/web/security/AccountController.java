@@ -16,9 +16,9 @@ public class AccountController {
     @GetMapping("/create")
     public Account create(){
         Account account=new Account();
-        account.setId("admin");
+        account.setId("user");
         account.setPassword("1234");
-        accountService.save(account, "ROLE_ADMIN");
+        accountService.save(account, "ROLE_USER");
         return account;
     }
 
